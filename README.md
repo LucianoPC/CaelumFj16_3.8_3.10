@@ -13,6 +13,8 @@ Uso do Eclipse para desenvolvimento das classes
 Autores
 ------
 
-Luciano Prestes Cavalcanti e Ruyther Parente da Costa
+Luciano Prestes Cavalcanti
+
+Ruyther Parente da Costa
 
 
