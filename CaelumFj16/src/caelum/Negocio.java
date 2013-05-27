@@ -2,9 +2,9 @@ package caelum;
 
 import java.util.Calendar;
 
-public class Negocio {
+public class Negocio implements Comparable<Negocio>{
 	
-	private final double preco;
+	private final Double preco;
 	private final int quantidade;
 	private final Calendar data;
 	
@@ -17,7 +17,7 @@ public class Negocio {
 	this.data = data;
 	}
 	
-	public double getPreco() {
+	public Double getPreco() {
 	return preco;
 	}
 	
@@ -31,6 +31,12 @@ public class Negocio {
 	
 	public double getVolume(){
 		return preco * quantidade;
+	}
+
+	@Override
+	public int compareTo(Negocio negocio) {
+		
+		return this.getPreco().compareTo(negocio.getPreco());
 	}
 	
 }

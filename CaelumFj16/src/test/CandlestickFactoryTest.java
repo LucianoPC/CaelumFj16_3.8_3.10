@@ -2,8 +2,10 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import junit.framework.Assert;
@@ -73,6 +75,62 @@ public class CandlestickFactoryTest {
 		Assert.assertEquals(40.5, candle.getMaximo(), 0.00001);
 		Assert.assertEquals(4050.0, candle.getVolume(), 0.00001);
 
+	}
+	
+	@Test
+	public void negocioEmOrdemCrestenteDeValor(){
+		Calendar hoje = Calendar.getInstance();
+		
+		Negocio negocio1 = new Negocio(40.5,100,hoje);		
+		Negocio negocio2 = new Negocio(45.0,100,hoje);
+		Negocio negocio3 = new Negocio(39.8,100,hoje);
+		Negocio negocio4 = new Negocio(42.3,100,hoje);
+		
+		ArrayList<Negocio> negocios = new ArrayList<Negocio>();
+		
+		negocios.add(negocio1);
+		negocios.add(negocio2);
+		negocios.add(negocio3);
+		negocios.add(negocio4);
+		
+		ArrayList<Negocio> negocios_crescente = new ArrayList<Negocio>();
+		
+		negocios_crescente.add(negocio3);
+		negocios_crescente.add(negocio1);
+		negocios_crescente.add(negocio4);
+		negocios_crescente.add(negocio2);
+		
+		CandlestickFactory.negocioEmOrdemCrestenteDeValor(negocios);
+		
+		assertEquals(negocios_crescente, negocios);
+	}
+	
+	@Test
+	public void negocioEmOrdemDecrescenteDeValor(){
+		Calendar hoje = Calendar.getInstance();
+		
+		Negocio negocio1 = new Negocio(40.5,100,hoje);		
+		Negocio negocio2 = new Negocio(45.0,100,hoje);
+		Negocio negocio3 = new Negocio(39.8,100,hoje);
+		Negocio negocio4 = new Negocio(42.3,100,hoje);
+		
+		ArrayList<Negocio> negocios = new ArrayList<Negocio>();
+		
+		negocios.add(negocio1);
+		negocios.add(negocio2);
+		negocios.add(negocio3);
+		negocios.add(negocio4);
+		
+		ArrayList<Negocio> negocios_decrescente = new ArrayList<Negocio>();
+		
+		negocios_decrescente.add(negocio2);
+		negocios_decrescente.add(negocio4);
+		negocios_decrescente.add(negocio1);
+		negocios_decrescente.add(negocio3);
+		
+		CandlestickFactory.negocioEmOrdemDecrescenteDeValor(negocios);
+		
+		assertEquals(negocios_decrescente, negocios);
 	}
 		
 }

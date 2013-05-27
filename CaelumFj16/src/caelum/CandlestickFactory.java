@@ -1,6 +1,8 @@
 package caelum;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 public class CandlestickFactory {
@@ -29,6 +31,15 @@ public class CandlestickFactory {
 		return new Candlestick(abertura, fechamento, minimo, maximo,
 				volume, data);
 
+	}
+	
+	public static void negocioEmOrdemCrestenteDeValor(ArrayList<Negocio> negocios){
+		Collections.sort(negocios);
+	}
+	
+	public static void negocioEmOrdemDecrescenteDeValor(ArrayList<Negocio> negocios){
+		Collections.sort(negocios);
+		Collections.reverse(negocios);
 	}
 	
 }
